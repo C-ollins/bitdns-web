@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Web3 from 'web3';
 import abi from "./abi.json"
 import { ConnectKitButton, ConnectKitProvider } from 'connectkit';
 import { useContractReads, useContractWrite, usePrepareContractWrite } from 'wagmi';

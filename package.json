@@ -12,8 +12,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "wagmi": "0.8.10",
-    "web-vitals": "^2.1.4",
-    "web3modal": "^1.9.12"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
