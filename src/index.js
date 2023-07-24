@@ -1,17 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const {
+  chain,
+  WagmiConfig,
+  createClient,
+} = require("wagmi");
+
+const { getDefaultClient } = require("connectkit");
+
+export const rootstock = {
+  id: 31,
+  name: 'Rootstock',
+  network: 'Rootstock',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Rootstock',
+    symbol: 'tRBTC',
+  },
+  rpcUrls: {
+    public: 'https://public-node.testnet.rsk.co',
+    default: 'https://public-node.testnet.rsk.co',
+  },
+  blockExplorers: {
+    etherscan: { name: 'Explorer', url: 'https://explorer.testnet.rsk.co/' },
+    default: { name: 'Explorer', url: 'https://explorer.testnet.rsk.co/' },
+  },
+}
+
+const client = createClient(
+  getDefaultClient({
+    appName: "BNS",
+    chains: [rootstock],
+  })
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <WagmiConfig client={client}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </WagmiConfig>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
